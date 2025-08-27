@@ -1,0 +1,690 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Professional Portfolio — Your Name</title>
+  <meta name="description" content="Professional portfolio of Your Name — Developer, Designer, Problem Solver." />
+  <style>
+    /* --------------------
+       Reset + base
+       -------------------- */
+    :root {
+      --bg: #0f1724;
+      --card: #0b1220;
+      --muted: #94a3b8;
+      --accent: #7c3aed;
+      --glass: rgba(255, 255, 255, 0.04);
+      --max-width: 1100px;
+      color-scheme: dark;
+      --transition: 320ms cubic-bezier(.2, .9, .3, 1);
+    }
+
+    * {
+      box-sizing: border-box
+    }
+
+    html,
+    body {
+      height: 100%
+    }
+
+    html {
+      scroll-behavior: smooth
+    }
+
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      background: radial-gradient(1200px 600px at 10% 10%, rgba(124, 58, 237, 0.06), transparent), linear-gradient(180deg, #071028 0%, #071122 100%);
+      color: #e6eef8;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      line-height: 1.5;
+      padding: 32px 20px;
+    }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto
+    }
+
+    /* --------------------
+       Top Nav / Header
+       -------------------- */
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 28px;
+      flex-wrap: wrap
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap
+    }
+
+    .logo {
+      width: 46px;
+      height: 46px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, var(--accent), #06b6d4);
+      display: grid;
+      place-items: center;
+      font-weight: 700;
+      color: white
+    }
+
+    nav {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      flex-wrap: wrap
+    }
+
+    .navlink {
+      padding: 8px 12px;
+      border-radius: 8px;
+      color: var(--muted);
+      text-decoration: none;
+      font-weight: 600
+    }
+
+    .navlink:hover {
+      color: #fff;
+      background: var(--glass)
+    }
+
+    .cta {
+      background: linear-gradient(90deg, var(--accent), #06b6d4);
+      padding: 9px 14px;
+      border-radius: 10px;
+      color: white;
+      text-decoration: none;
+      font-weight: 700
+    }
+
+    /* --------------------
+       Hero
+       -------------------- */
+    .hero {
+      display: grid;
+      grid-template-columns: 1fr 420px;
+      gap: 28px;
+      align-items: center;
+      margin-bottom: 36px
+    }
+
+    .intro {
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), transparent);
+      padding: 28px;
+      border-radius: 14px;
+      backdrop-filter: blur(6px);
+      box-shadow: 0 6px 18px rgba(2, 6, 23, 0.6)
+    }
+
+    h1 {
+      margin: 0 0 8px;
+      font-size: clamp(28px, 4vw, 40px);
+      line-height: 1.02
+    }
+
+    p.lead {
+      color: var(--muted);
+      margin: 0 0 16px
+    }
+
+    .skills-row {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap
+    }
+
+    .chip {
+      padding: 8px 10px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid rgba(255, 255, 255, 0.03);
+      font-weight: 600;
+      color: var(--muted);
+      font-size: 13px
+    }
+
+    /* profile card */
+    .profile-card {
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0.01));
+      padding: 20px;
+      border-radius: 14px;
+      border: 1px solid rgba(255, 255, 255, 0.03);
+    }
+
+    .avatar {
+      width: 100%;
+      height: 300px;
+      border-radius: 10px;
+      background: linear-gradient(180deg, #0b1220, #081022);
+      display: grid;
+      place-items: center;
+      overflow: hidden;
+      position: relative
+    }
+
+    .avatar .initial {
+      font-size: 48px;
+      font-weight: 800;
+      letter-spacing: 1px;
+      color: var(--accent)
+    }
+
+    .meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 14px;
+      flex-wrap: wrap
+    }
+
+    .meta .title {
+      font-weight: 700
+    }
+
+    .meta .sub {
+      color: var(--muted);
+      font-size: 13px
+    }
+
+    /* --------------------
+       Grid sections: About | Projects | Contact
+       -------------------- */
+    main {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 20px
+    }
+
+    section.card {
+      background: var(--card);
+      padding: 20px;
+      border-radius: 14px;
+      border: 1px solid rgba(255, 255, 255, 0.03)
+    }
+
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px
+    }
+
+    /* Projects */
+    .projects {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px
+    }
+
+    .project {
+      padding: 14px;
+      border-radius: 12px;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.01), transparent);
+      border: 1px solid rgba(255, 255, 255, 0.03);
+      cursor: pointer;
+      transition: var(--transition);
+      display: block;
+      text-decoration: none;
+      color: inherit
+    }
+
+    .project:hover {
+      transform: translateY(-6px)
+    }
+
+    .project h3 {
+      margin: 0 0 6px
+    }
+
+    .project p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px
+    }
+
+    /* Skills */
+    .skill-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px
+    }
+
+    .skill {
+      min-width: 110px;
+      padding: 12px;
+      border-radius: 10px;
+      background: linear-gradient(90deg, rgba(255, 255, 255, 0.02), transparent);
+      border: 1px solid rgba(255, 255, 255, 0.02);
+      font-weight: 600
+    }
+
+    /* Contact */
+    form {
+      display: grid;
+      gap: 10px
+    }
+
+    input,
+    textarea {
+      background: transparent;
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      padding: 12px;
+      border-radius: 8px;
+      color: inherit;
+      font-size: 14px
+    }
+
+    textarea {
+      min-height: 120px
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 10px 14px;
+      border-radius: 10px;
+      background: linear-gradient(90deg, var(--accent), #06b6d4);
+      color: white;
+      text-decoration: none;
+      font-weight: 700;
+      border: none;
+      cursor: pointer
+    }
+
+    /* footer */
+    footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 18px;
+      color: var(--muted);
+      font-size: 14px;
+      flex-wrap: wrap;
+      gap: 10px
+    }
+
+    /* Modal via :target */
+    .modal {
+      position: fixed;
+      inset: 0;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(180deg, rgba(2, 6, 23, 0.6), rgba(2, 6, 23, 0.8));
+      z-index: 80;
+      padding: 20px
+    }
+
+    .modal:target {
+      display: flex
+    }
+
+    .modal-card {
+      width: min(860px, 94%);
+      background: #071021;
+      padding: 18px;
+      border-radius: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.03)
+    }
+
+    .modal-card h2 {
+      margin: 0 0 10px
+    }
+
+    .modal-close {
+      background: transparent;
+      border: 0;
+      color: var(--muted);
+      cursor: pointer;
+      font-weight: 700;
+      text-decoration: none;
+      padding: 6px 8px;
+      border-radius: 8px
+    }
+
+    .modal .muted {
+      color: var(--muted)
+    }
+
+    /* tiny helpers */
+    .muted {
+      color: var(--muted)
+    }
+
+    .center {
+      display: grid;
+      place-items: center
+    }
+
+    .underline {
+      height: 3px;
+      width: 56px;
+      background: linear-gradient(90deg, var(--accent), #06b6d4);
+      border-radius: 6px;
+      margin-top: 10px
+    }
+
+    .sr-only {
+      position: absolute;
+      left: -9999px
+    }
+
+    /* --------------------
+       Responsive tweaks
+       -------------------- */
+    @media (max-width:920px) {
+      .hero {
+        grid-template-columns: 1fr
+      }
+
+      header {
+        flex-direction: column;
+        align-items: flex-start
+      }
+
+      .projects {
+        grid-template-columns: 1fr
+      }
+    }
+
+    @media (max-width:720px) {
+      .two-col {
+        grid-template-columns: 1fr
+      }
+
+      .meta {
+        flex-direction: column;
+        align-items: flex-start
+      }
+
+      .container {
+        padding: 0
+      }
+    }
+
+    @media (max-width:500px) {
+      body {
+        padding: 20px 12px
+      }
+
+      .navlink,
+      .cta {
+        font-size: 14px;
+        padding: 6px 10px
+      }
+
+      h1 {
+        font-size: 24px
+      }
+
+      .btn {
+        padding: 8px 12px
+      }
+
+      .project p {
+        font-size: 13px
+      }
+
+      footer {
+        flex-direction: column;
+        align-items: flex-start
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <header>
+      <div class="brand">
+        
+        <div class="logo">
+          <img class ="logo" src="6156940772956557091_121.jpg">
+        </div>
+        <div>
+          <div style="font-weight:800">Harikrishnan R</div>
+          <div style="font-size:12px;color:var(--muted)">Frontend Engineer • Product-minded</div>
+        </div>
+      </div>
+
+      <nav aria-label="Primary navigation">
+        <a class="navlink" href="#about">About</a>
+        <a class="navlink" href="#projects">Projects</a>
+        <a class="navlink" href="#contact">Contact</a>
+        <a class="cta" href="#contact">Hire me</a>
+      </nav>
+    </header>
+
+    <section class="hero">
+      <div class="intro">
+        <h1>Hi — I'm <span style="color:var(--accent)">Harikrishnan.R</span></h1>
+        <p class="lead">I build elegant, accessible web experiences with a focus on performance and clarity. I design
+          and ship features that users love and engineering teams trust.</p>
+
+        <div style="display:flex;gap:12px;align-items:center;margin-bottom:16px">
+          <a class="btn" href="#projects">View Projects</a>
+          <a class="navlink" href="#contact">Let's talk</a>
+        </div>
+
+        <div class="skills-row">
+          <div class="chip">JavaScript</div>
+          <div class="chip">React</div>
+          <div class="chip">HTML</div>
+          <div class="chip">Node.js</div>
+          <div class="chip">CSS</div>
+          <div class="chip">Java</div>
+        </div>
+      </div>
+
+      <aside class="profile-card">
+        <div class="avatar">
+          <img class="avatar" src="6156940772956557091_121.jpg"   !important>
+          <div class="initial"></div>
+        </div>
+        <div class="meta">
+          <div>
+            <div class="title">Harikrishnan R</div>
+            <div class="sub">Frontend Engineer </div>
+          </div>
+          <div style="text-align:right">
+            <div style="font-weight:700">Fresher</div>
+            <div class="muted" style="font-size:13px">building websites</div>
+          </div>
+        </div>
+      </aside>
+    </section>
+
+    <main>
+      <section id="about" class="card">
+        <h2>About</h2>
+        <div class="underline"></div>
+        <div class="two-col" style="margin-top:12px">
+          <div>
+            <p class="muted">I am an enthusiastic Frontend Engineer and a BCA graduate from Sree Narayana College of Technology, passionate about building modern, responsive, and user-friendly web applications. I enjoy learning new technologies and applying them to create clean, efficient, and accessible solutions. With a strong foundation in JavaScript, React, HTML, CSS, and Node.js, I am eager to contribute to real-world projects, strengthen my problem-solving skills, and grow as a developer.</p>
+
+            <h3 style="margin-top:16px">What I bring</h3>
+            <ul class="muted">
+              <li>Strong understanding of HTML, CSS, JavaScript, and React</li>
+              <li>Ability to create responsive and accessible UI</li>
+              <li>Basic knowledge of Node.js, Java, and databases</li>
+              <li>Quick learner with a passion for problem-solving and continuous improvement</li>
+            </ul>
+          </div>
+
+          <div>
+            <h3>Selected achievements</h3>
+            <ol class="muted">
+              <li>Built responsive personal portfolio website showcasing projects.</li>
+              <li>Developed small web apps (like form validation, calendar, and case diary system) as learning projects.</li>
+              <li>Continuously improving coding skills through practice and projects.</li>
+            </ol>
+          </div>
+        </div>
+      </section>
+
+      <section id="projects" class="card">
+        <h2>Projects</h2>
+        <div class="underline"></div>
+        <div class="projects" style="margin-top:14px">
+          <!-- Each project is an anchor to its modal (CSS :target) -->
+          <a class="project" href="#modal-design-system" aria-haspopup="dialog">
+            <h3>Agricare</h3>
+            <p class="muted">An Agricultural E-Commerce website.</p>
+          </a>
+
+          <a class="project" href="#modal-realtime-dashboard" aria-haspopup="dialog">
+            <h3>Job Venture</h3>
+            <p class="muted">online job seeking platform</p>
+          </a>
+
+          <a class="project" href="#modal-ecommerce" aria-haspopup="dialog">
+            <h3>Zomato clone</h3>
+            <p class="muted">Online food delivery app</p>
+          </a>
+
+          <a class="project" href="#modal-case-diary" aria-haspopup="dialog">
+            <h3>Calculator</h3>
+            <p class="muted">calculator using Html,css and javascript</p>
+          </a>
+        </div>
+      </section>
+
+      <section class="card">
+        <h2>Skills</h2>
+        <div class="underline"></div>
+        <div style="margin-top:12px" class="skill-list">
+          <div class="skill">HTML & CSS</div>
+          <div class="skill">Modern JS</div>
+          <div class="skill">React & Next</div>
+          <div class="skill">TypeScript</div>
+          <div class="skill">Testing</div>
+          <div class="skill">Performance</div>
+          <div class="skill">Java</div>
+          <div class="skill">Node JS</div>
+          <div class="skill">React</div>
+          <div class="skill">python</div>
+          <div class="skill">Express JS</div>
+        </div>
+      </section>
+
+      <section id="contact" class="card">
+        <h2>Contact</h2>
+        <div class="underline"></div>
+        <div style="margin-top:12px;display:grid;grid-template-columns:1fr 320px;gap:20px">
+          <div>
+            <p class="muted">Want to work together or have a quick question? Send a short message and I'll get back to
+              you within a few days.</p>
+
+            <!-- CSS-only contact: browser mail client is invoked via form action mailto (best-effort, depends on user's client) -->
+            <form id="contactForm" action="harikrishnanofficial11@gmail.com" method="post" enctype="text/plain">
+              <input id="name" name="Name" placeholder="Your name" required />
+              <input id="email" name="Email" type="email" placeholder="Your email" required />
+              <textarea id="message" name="Message" placeholder="How can I help?" required></textarea>
+              <div style="display:flex;gap:10px;align-items:center">
+                <button class="btn" type="submit">Send message</button>
+
+                <!-- Resume download using a data: text file; works without JS -->
+                <a class="navlink" id="downloadResume" download="Resume.pdf"
+                  href="Resume.pdf">Download
+                  Resume</a>
+              </div>
+            </form>
+          </div>
+
+          <aside
+            style="padding:14px;border-radius:10px;background:linear-gradient(180deg, rgba(255,255,255,0.01), transparent);border:1px solid rgba(255,255,255,0.02)">
+            <h4 style="margin:0">Contact details</h4>
+            <p class="muted" style="margin-top:8px">
+              Email: <a href="mailto:you@example.com">harikrishnanofficial11@gmail.com</a><br />
+              Location: Remote (India)<br />
+              Available for: Full-time / Part time
+            </p>
+
+            <div style="margin-top:12px;display:flex;gap:8px">
+              <a class="chip" href="https://github.com/harikrishnanr11">GitHub</a>
+              <a class="chip" href="https://www.linkedin.com/in/hari-krishnan-r01/">LinkedIn</a>
+              
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <footer>
+        
+        <div class="muted"></div>
+      </footer>
+    </main>
+  </div>
+
+  <!-- Modal blocks for each project (CSS :target) -->
+  <div id="modal-design-system" class="modal" role="dialog" aria-modal="true" aria-labelledby="ms-title">
+    <div class="modal-card" tabindex="-1">
+      <div style="display:flex;justify-content:space-between;align-items:center">
+        <h2 id="ms-title">Agricare</h2>
+        <a class="modal-close" href="#" aria-label="Close modal">Close</a>
+      </div>
+      <p class="muted" style="margin-top:6px">An Agricultural E-Commerce website with plant disease prediction</p>
+      <div style="margin-top:12px">
+        <a class="btn" href="#" aria-disabled="true">View live</a>
+        <a class="navlink" style="margin-left:10px" href="#">Source</a>
+      </div>
+    </div>
+  </div>
+
+  <div id="modal-realtime-dashboard" class="modal" role="dialog" aria-modal="true" aria-labelledby="rd-title">
+    <div class="modal-card" tabindex="-1">
+      <div style="display:flex;justify-content:space-between;align-items:center">
+        <h2 id="rd-title">Job Venture</h2>
+        <a class="modal-close" href="#" aria-label="Close modal">Close</a>
+      </div>
+      <p class="muted" style="margin-top:6px">An online job seeking platform for freshers</p>
+      <div style="margin-top:12px">
+        <a class="btn" href="#" aria-disabled="true">View live</a>
+        <a class="navlink" style="margin-left:10px" href="#">Source</a>
+      </div>
+    </div>
+  </div>
+
+  <div id="modal-ecommerce" class="modal" role="dialog" aria-modal="true" aria-labelledby="ec-title">
+    <div class="modal-card" tabindex="-1">
+      <div style="display:flex;justify-content:space-between;align-items:center">
+        <h2 id="ec-title">Zomato clone</h2>
+        <a class="modal-close" href="#" aria-label="Close modal">Close</a>
+      </div>
+      <p class="muted" style="margin-top:6px">Online food delivery app</p>
+      <div style="margin-top:12px">
+        <a class="btn" href="#" aria-disabled="true">View live</a>
+        <a class="navlink" style="margin-left:10px" href="#">Source</a>
+      </div>
+    </div>
+  </div>
+
+  <div id="modal-case-diary" class="modal" role="dialog" aria-modal="true" aria-labelledby="cd-title">
+    <div class="modal-card" tabindex="-1">
+      <div style="display:flex;justify-content:space-between;align-items:center">
+        <h2 id="cd-title">Calculator</h2>
+        <a class="modal-close" href="#" aria-label="Close modal">Close</a>
+      </div>
+      <p class="muted" style="margin-top:6px">A simple calculator using Html,css and javascript</p>
+      <div style="margin-top:12px">
+        <a class="btn" href="#" aria-disabled="true">View live</a>
+        <a class="navlink" style="margin-left:10px" href="#">Source</a>
+      </div>
+    </div>
+  </div>
+
+
+ 
+</body>
+
+</html>
